@@ -1,5 +1,5 @@
 " Allow autocompleting minizinc keywords with <Ctrl-N> and <Ctrl-P>
-autocmd FileType    minizinc    set dictionary=/path/to/minizinc_dictionary
+autocmd FileType    minizinc    set dictionary=\~/.vim/misc/minizinc_dict
 autocmd FileType    minizinc    set complete+=k
 
 " Save and run the current minizinc file from Vim.

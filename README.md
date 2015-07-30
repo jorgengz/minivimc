@@ -9,6 +9,6 @@ keywords as autocomplete words with \<Ctrl-N\> and \<Ctrl-P\>. It also has
 commands that allow quickly saving and running a MiniZinc file (.mzn), and to
 quickly save and add data files (.dzn) to run with the MiniZinc file.
 
-**minizinc_dict** can be placed anywhere, and should work as long as this is
-reflected in the path to the dictionary in your .vimrc. The location
-~/.vim/misc/ is set by default.
+**misc/minizinc_dict** contains the autocomplete dictionary, and can be placed
+anywhere. If you choose another location than ~/.vim/misc/, remember to update
+the corresponding line in your .vimrc.
