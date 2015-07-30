@@ -5,7 +5,7 @@ Place the contents of **syntax** and **ftdetect** in their respective folders
 in the .vim/ directory if they exist. Otherwise copy the entire folders.
 
 The contents of **vimrc** can be copied to your .vimrc to add MiniZinc
-keywords as autocomplete words with <Ctrl-N> and <Ctrl-P>. It also has
+keywords as autocomplete words with \<Ctrl-N\> and \<Ctrl-P\>. It also has
 commands that allow quickly saving and running a MiniZinc file (.mzn), and to
 quickly save and add data files (.dzn) to run with the MiniZinc file.
 
