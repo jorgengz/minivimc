@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: MiniZinc
 " Maintainer: Jørgen Granseth
-" Latest Revision: 30 July 2015
+" Latest Revision: 31 July 2015
 
 if exists("b:current_syntax")
   finish
@@ -52,8 +52,9 @@ syn keyword minizincExpression  not in subset superset
 syn keyword minizincExpression  union diff symdiff intersect inter card
 "}}}
 
-syn keyword minizincTodo        TODO FIXME XXX NOTE contained
-syn match   minizincComment     '%.*$'              contains=minizincTodo
+syn keyword minizincTodo        TODO FIXME XXX NOTE     contained
+syn match   minizincComment     '%.*$'                  contains=minizincTodo
+syn region  minizincComment     start='/\*' end='\*/'   contains=minizincTodo
 
 " Links: {{{
 hi def link minizincItem        Statement"{{{"}}}
