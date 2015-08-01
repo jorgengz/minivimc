@@ -16,7 +16,8 @@ syn keyword minizincItem        type include constraint
 syn keyword minizincItem        solve satisfy minimize maximize
 syn keyword minizincItem        annotation predicate test function of
 
-syn keyword minizincFunction    assert max min sum alldifferent
+syn keyword minizincFunction    assert max min sum abs alldifferent
+syn keyword minizincFunction    sin cos tan asin acos atan sinh cosh
 
 syn keyword minizincOutput      output show show_float
 
@@ -37,8 +38,9 @@ syn match minizincFloat         '[0-9]\+\.[0-9]\+'
 syn match minizincFloat         '[0-9]\+\.[0-9]\+[Ee][-+]?[0-9]\+'
 syn match minizincFloat         '[0-9]\+[Ee][-+]?[0-9]'
 
-syn region  minizincString          start='"'   skip='\\"'  end='"' contains=minizincFormattedString
+syn region  minizincString          start='"'   skip='\\"'  end='"' contains=minizincFormattedString,minizincSpecialChar
 syn region  minizincFormattedString start='\\('             end=')' contained
+syn match   minizincSpecialChar     '\\n\|\\t\|\\f\|\\r'            contained
 " }}}
 
 " Mathematical logic words and patterns: {{{
@@ -69,4 +71,5 @@ hi def link minizincString      String
 hi def link minizincComment     Comment
 hi def link minizincFunction    Function
 hi def link minizincExpression  Special
+hi def link minizincSpecialChar Type
 " }}}
