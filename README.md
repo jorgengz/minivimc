@@ -1,5 +1,5 @@
 # minivimc
-Vim files for syntax highlighting MiniZinc files (.mzn, .dzn)
+Vim files for syntax highlighting MiniZinc 2.0 files (.mzn, .dzn)
 
 Place the contents of **syntax** and **ftdetect** in their respective folders
 in the .vim/ directory if they exist. Otherwise copy the entire folders.
