@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: MiniZinc
 " Maintainer: Jørgen Granseth
-" Latest Revision: 2 August 2015
+" Latest Revision: 9 August 2015
 " Based on http://www.minizinc.org/2.0/doc-lib/doc.html
 
 if exists("b:current_syntax")
@@ -54,6 +54,7 @@ syn keyword minizincConstraint      subcircuit
 syn keyword minizincConstraint      sum_pred
 " }}}
 " All-different And Related Constraints: {{{
+syn keyword minizincConstraint      alldifferent
 syn keyword minizincConstraint      all_different
 syn keyword minizincConstraint      all_disjoint
 syn keyword minizincConstraint      all_equal
@@ -135,91 +136,11 @@ syn keyword minizincFunction        trace
 " }}}
 
 " Identifiers: {{{
-syn keyword minizincIdentifier      var
 syn keyword minizincIdentifier      par
+syn keyword minizincIdentifier      var
 syn match   minizincIdentifier      '='
 " }}}
 
-" Primitive types: {{{
-syn keyword minizincType            ann
-syn keyword minizincType            array
-syn keyword minizincType            bool
-syn keyword minizincType            float
-syn keyword minizincType            int
-syn keyword minizincType            list
-syn keyword minizincType            opt
-syn keyword minizincType            set
-syn keyword minizincType            string
-syn match   minizincType            ':'
-
-" Boolean: {{{
-syn keyword minizincBoolean         true
-syn keyword minizincBoolean         false
-syn keyword minizincFunction        bool_eq
-" }}}
-
-" Integer: {{{
-syn match minizincInteger           '[0-9]\+'
-syn match minizincInteger           '0x[0-9A-Fa-f]\+'
-syn match minizincInteger           '0o[0-7]\+'
-syn keyword minizincFunction        int_eq
-syn keyword minizincFunction        int_ne
-" }}}
-
-" Floats: {{{
-syn match minizincFloat             '[0-9]\+\.[0-9]\+'
-syn match minizincFloat             '[0-9]\+\.[0-9]\+[Ee][-+]?[0-9]\+'
-syn match minizincFloat             '[0-9]\+[Ee][-+]?[0-9]'
-" }}}
-
-" Strings: {{{
-syn region  minizincString          start='"'   skip='\\"'  end='"' contains=minizincFormattedString,minizincSpecialChar
-syn region  minizincFormattedString start='\\('             end=')' contained
-syn match   minizincSpecialChar     '\\n\|\\t\|\\f\|\\r'            contained
-" String Operations: {{{
-syn keyword minizincFunction        concat
-syn keyword minizincFunction        format
-syn keyword minizincFunction        join
-" }}}
-" }}}
-" Arrays: {{{
-syn keyword minizincFunction        array1d
-syn keyword minizincFunction        array2d
-syn keyword minizincFunction        array3d
-syn keyword minizincFunction        array4d
-syn keyword minizincFunction        array5d
-syn keyword minizincFunction        array6d
-syn keyword minizincFunction        arrayXd
-syn keyword minizincFunction        col
-syn keyword minizincFunction        has_element
-syn keyword minizincFunction        has_index
-syn keyword minizincFunction        index_set
-syn keyword minizincFunction        index_set_1of2
-syn keyword minizincFunction        index_set_1of3
-syn keyword minizincFunction        index_set_1of4
-syn keyword minizincFunction        index_set_1of5
-syn keyword minizincFunction        index_set_1of6
-syn keyword minizincFunction        index_set_2of2
-syn keyword minizincFunction        index_set_2of3
-syn keyword minizincFunction        index_set_2of4
-syn keyword minizincFunction        index_set_2of5
-syn keyword minizincFunction        index_set_2of6
-syn keyword minizincFunction        index_set_3of3
-syn keyword minizincFunction        index_set_3of4
-syn keyword minizincFunction        index_set_3of5
-syn keyword minizincFunction        index_set_3of6
-syn keyword minizincFunction        index_set_4of4
-syn keyword minizincFunction        index_set_4of5
-syn keyword minizincFunction        index_set_4of6
-syn keyword minizincFunction        index_set_5of5
-syn keyword minizincFunction        index_set_5of6
-syn keyword minizincFunction        index_set_6of6
-syn keyword minizincFunction        index_sets_agree
-syn keyword minizincFunction        length
-syn keyword minizincFunction        row
-" }}}
-
-" }}}
 " Output: {{{
 syn keyword minizincOutput          output
 syn keyword minizincOutput          show
@@ -230,41 +151,41 @@ syn keyword minizincOutput          show_int
 
 " Mathematical Logic Words and Patterns: {{{
 " Comparison: {{{
-syn match minizincComparison        '!='
-syn match minizincComparison        '<'
-syn match minizincComparison        '<='
-syn match minizincComparison        '='
-syn match minizincComparison        '>'
-syn match minizincComparison        '>='
-syn match minizincComparison        '\~='
+syn match   minizincComparison      '!='
+syn match   minizincComparison      '<'
+syn match   minizincComparison      '<='
+syn match   minizincComparison      '='
+syn match   minizincComparison      '>'
+syn match   minizincComparison      '>='
+syn match   minizincComparison      '\~='
 " }}}
 " Arithmetic: {{{
-syn match minizincArithmetic        '\*'
-syn match minizincArithmetic        '+'
-syn match minizincArithmetic        '-'
-syn match minizincArithmetic        '/'
-syn match minizincArithmetic        '\~\*'
-syn match minizincArithmetic        '\~+'
-syn match minizincArithmetic        '\~-'
+syn match   minizincArithmetic      '\*'
+syn match   minizincArithmetic      '+'
+syn match   minizincArithmetic      '-'
+syn match   minizincArithmetic      '/'
+syn match   minizincArithmetic      '\~\*'
+syn match   minizincArithmetic      '\~+'
+syn match   minizincArithmetic      '\~-'
 syn keyword minizincArithmetic      div
 syn keyword minizincArithmetic      mod
 " }}}
 " Logical Operations: {{{
-syn match minizincLogical           '->'
-syn match minizincLogical           '/\\'
-syn match minizincLogical           '<-'
-syn match minizincLogical           '<->'
-syn match minizincLogical           '\\/'
-syn keyword minizincLogical         clause
-syn keyword minizincLogical         exists
-syn keyword minizincLogical         forall
-syn keyword minizincLogical         iffall
-syn keyword minizincLogical         not
-syn keyword minizincLogical         xor
-syn keyword minizincLogical         xorall
+syn match   minizincBoolLogic       '->'
+syn match   minizincBoolLogic       '/\\'
+syn match   minizincBoolLogic       '<-'
+syn match   minizincBoolLogic       '<->'
+syn match   minizincBoolLogic       '\\/'
+syn keyword minizincBoolLogic       clause
+syn keyword minizincBoolLogic       exists
+syn keyword minizincBoolLogic       forall
+syn keyword minizincBoolLogic       iffall
+syn keyword minizincBoolLogic       not
+syn keyword minizincBoolLogic       xor
+syn keyword minizincBoolLogic       xorall
 " }}}
 " Set Operations: {{{
-syn match minizincLogical           '\.\.'
+syn match   minizincLogical         '\.\.'
 syn keyword minizincLogical         array_intersect
 syn keyword minizincLogical         array_union
 syn keyword minizincLogical         card
@@ -323,6 +244,135 @@ syn keyword minizincFunction        set2array
 " }}}
 " }}}
 
+" Primitive types: {{{
+syn keyword minizincType            ann
+syn keyword minizincType            array
+syn keyword minizincType            bool
+syn keyword minizincType            float
+syn keyword minizincType            int
+syn keyword minizincType            list
+syn keyword minizincType            opt
+syn keyword minizincType            set
+syn keyword minizincType            string
+syn match   minizincType            ':'
+
+" Boolean: {{{
+syn keyword minizincBoolean         true
+syn keyword minizincBoolean         false
+syn keyword minizincFunction        bool_eq
+" }}}
+
+" Integer: {{{
+syn match   minizincInteger         '\(\s\@<=[+-]\)\=\<[0-9]\+\>'
+syn match   minizincInteger         '\(\s\@<=[+-]\)\=\<0x[0-9A-Fa-f]\+\>'
+syn match   minizincInteger         '\(\s\@<=[+-]\)\=\<0o[0-7]\+\>'
+syn keyword minizincFunction        int_eq
+syn keyword minizincFunction        int_ne
+" }}}
+
+" Floats: {{{
+syn match   minizincFloat           '\(\s\@<=[+-]\)\=\<[0-9]\+\.[0-9]\+\>'
+syn match   minizincFloat           '\(\s\@<=[+-]\)\=\<[0-9]\+\.[0-9]\+[Ee][-+]?[0-9]\+\>'
+syn match   minizincFloat           '\(\s\@<=[+-]\)\=\<[0-9]\+[Ee][-+]?[0-9]\>'
+" }}}
+
+" Strings: {{{
+syn region  minizincString          start='"'   skip='\\"'  end='"' contains=minizincFormattedString,minizincSpecialChar
+syn region  minizincFormattedString start='\\('             end=')' contained contains=minizincFunctionArg,minizincInteger,minizincExpression,minizincArithmetic,minizincTrigonometric,minizincFunction,minizincBoolean
+syn match   minizincSpecialChar     '\\n\|\\t'                      contained
+syn region  minizincFunctionArg     start='\(\\\@<!\)('     end=')' contained transparent
+
+" String Operations: {{{
+syn keyword minizincFunction        concat
+syn keyword minizincFunction        format
+syn keyword minizincFunction        join
+" }}}
+" }}}
+" Arrays: {{{
+syn keyword minizincFunction        array1d
+syn keyword minizincFunction        array2d
+syn keyword minizincFunction        array3d
+syn keyword minizincFunction        array4d
+syn keyword minizincFunction        array5d
+syn keyword minizincFunction        array6d
+syn keyword minizincFunction        arrayXd
+syn keyword minizincFunction        col
+syn keyword minizincFunction        has_element
+syn keyword minizincFunction        has_index
+syn keyword minizincFunction        index_set
+syn keyword minizincFunction        index_set_1of2
+syn keyword minizincFunction        index_set_1of3
+syn keyword minizincFunction        index_set_1of4
+syn keyword minizincFunction        index_set_1of5
+syn keyword minizincFunction        index_set_1of6
+syn keyword minizincFunction        index_set_2of2
+syn keyword minizincFunction        index_set_2of3
+syn keyword minizincFunction        index_set_2of4
+syn keyword minizincFunction        index_set_2of5
+syn keyword minizincFunction        index_set_2of6
+syn keyword minizincFunction        index_set_3of3
+syn keyword minizincFunction        index_set_3of4
+syn keyword minizincFunction        index_set_3of5
+syn keyword minizincFunction        index_set_3of6
+syn keyword minizincFunction        index_set_4of4
+syn keyword minizincFunction        index_set_4of5
+syn keyword minizincFunction        index_set_4of6
+syn keyword minizincFunction        index_set_5of5
+syn keyword minizincFunction        index_set_5of6
+syn keyword minizincFunction        index_set_6of6
+syn keyword minizincFunction        index_sets_agree
+syn keyword minizincFunction        length
+syn keyword minizincFunction        row
+" }}}
+
+" }}}
+
+" Annotations: {{{
+syn match   minizincAnnotation      '::'
+syn keyword minizincAnnotation      defines_var
+syn keyword minizincAnnotation      doc_comment
+syn keyword minizincAnnotation      is_defined_var
+syn keyword minizincAnnotation      is_reverse_map
+syn keyword minizincAnnotation      output_array
+syn keyword minizincAnnotation      output_var
+syn keyword minizincAnnotation      promise_total
+syn keyword minizincAnnotation      var_is_introduced
+
+syn keyword minizincAnnotation      anti_first_fail
+syn keyword minizincAnnotation      bool_search
+syn keyword minizincAnnotation      complete
+syn keyword minizincAnnotation      dom_w_deg
+syn keyword minizincAnnotation      first_fail
+syn keyword minizincAnnotation      float_search
+syn keyword minizincAnnotation      impact
+syn keyword minizincAnnotation      indomain
+syn keyword minizincAnnotation      indomain_interval
+syn keyword minizincAnnotation      indomain_max
+syn keyword minizincAnnotation      indomain_median
+syn keyword minizincAnnotation      indomain_middle
+syn keyword minizincAnnotation      indomain_min
+syn keyword minizincAnnotation      indomain_random
+syn keyword minizincAnnotation      indomain_reverse_split
+syn keyword minizincAnnotation      indomain_split
+syn keyword minizincAnnotation      indomain_split_random
+syn keyword minizincAnnotation      input_order
+syn keyword minizincAnnotation      int_search
+syn keyword minizincAnnotation      largest
+syn keyword minizincAnnotation      max_regret
+syn keyword minizincAnnotation      most_constrained
+syn keyword minizincAnnotation      occurrence
+syn keyword minizincAnnotation      outdomain_max
+syn keyword minizincAnnotation      outdomain_median
+syn keyword minizincAnnotation      outdomain_min
+syn keyword minizincAnnotation      outdomain_random
+syn keyword minizincAnnotation      seq_search
+syn keyword minizincAnnotation      set_search
+syn keyword minizincAnnotation      smallest
+
+syn keyword minizincAnnotation      bounds
+syn keyword minizincAnnotation      domain
+" }}}
+
 " Comments: {{{
 syn keyword minizincTodo            TODO                    contained
 syn keyword minizincTodo            FIXME                   contained
@@ -360,11 +410,13 @@ hi def link minizincItem            Statement
 hi def link minizincConstraint      minizincFunction
 hi def link minizincOutput          Statement
 hi def link minizincComment         Comment
+hi def link minizincAnnotation      Todo
 
 " Types: {{{
 hi def link minizincType            Type
 hi def link minizincIdentifier      Identifier
 hi def link minizincBoolean         Boolean
+hi def link minizincBoolLogic       minizincBoolean
 hi def link minizincFloat           Number
 hi def link minizincInteger         Number
 hi def link minizincString          String
@@ -380,7 +432,7 @@ hi def link minizincExponential     minizincFunction
 " Mathematical Expressions: {{{
 hi def link minizincExpression      Special
 hi def link minizincArithmetic      minizincExpression
-hi def link minizincComparison      minizincExpression
+hi def link minizincComparison      minizincBoolLogic
 hi def link minizincLogical         minizincExpression
 " }}}
 
