@@ -1,0 +1,6 @@
+Convert binary function keywords to two match statements:
+syn keyword minizincX           kw
+                to
+syn match   minizincX           '\<kw\>'
+syn match   minizincFunction    '\<keyword\(\s*(\)\@='
+(allows highlighting both as a 'verb' and a regular function call)
