@@ -263,17 +263,17 @@ syn keyword minizincFunction        bool_eq
 " }}}
 
 " Integer: {{{
-syn match   minizincInteger         '\(\s\@<=[+-]\)\=\<[0-9]\+\>'
-syn match   minizincInteger         '\(\s\@<=[+-]\)\=\<0x[0-9A-Fa-f]\+\>'
-syn match   minizincInteger         '\(\s\@<=[+-]\)\=\<0o[0-7]\+\>'
+syn match   minizincInteger         '\(\(\s\|[[(=]\|\.\.\|->\|<-\)\@<=[+-]\)\=\<[0-9]\+\>' "]
+syn match   minizincInteger         '\(\(\s\|[[(=]\|\.\.\|->\|<-\)\@<=[+-]\)\=\<0x[0-9A-Fa-f]\+\>'
+syn match   minizincInteger         '\(\(\s\|[[(=]\|\.\.\|->\|<-\)\@<=[+-]\)\=\<0o[0-7]\+\>'
 syn keyword minizincFunction        int_eq
 syn keyword minizincFunction        int_ne
 " }}}
 
 " Floats: {{{
-syn match   minizincFloat           '\(\s\@<=[+-]\)\=\<[0-9]\+\.[0-9]\+\>'
-syn match   minizincFloat           '\(\s\@<=[+-]\)\=\<[0-9]\+\.[0-9]\+[Ee][-+]?[0-9]\+\>'
-syn match   minizincFloat           '\(\s\@<=[+-]\)\=\<[0-9]\+[Ee][-+]?[0-9]\>'
+syn match   minizincFloat           '\(\(\s\|[[(=]\|\.\.\|->\|<-\)\@<=[+-]\)\=\<[0-9]\+\.[0-9]\+\>'
+syn match   minizincFloat           '\(\(\s\|[[(=]\|\.\.\|->\|<-\)\@<=[+-]\)\=\<[0-9]\+\.[0-9]\+[Ee][-+]?[0-9]\+\>'
+syn match   minizincFloat           '\(\(\s\|[[(=]\|\.\.\|->\|<-\)\@<=[+-]\)\=\<[0-9]\+[Ee][-+]?[0-9]\>'
 " }}}
 
 " Strings: {{{
