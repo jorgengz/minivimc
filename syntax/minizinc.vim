@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: MiniZinc
 " Maintainer: Jørgen Granseth
-" Latest Revision: 9 August 2015
+" Latest Revision: 8 September 2015
 " Based on http://www.minizinc.org/2.0/doc-lib/doc.html
 
 if exists("b:current_syntax")
