@@ -180,24 +180,31 @@ syn keyword minizincBoolLogic       clause
 syn keyword minizincBoolLogic       exists
 syn keyword minizincBoolLogic       forall
 syn keyword minizincBoolLogic       iffall
-syn keyword minizincBoolLogic       not
+syn match   minizincBoolLogic       '\<not\>'
+syn match   minizincFunction        '\<not\(\s*(\)\@='
 syn keyword minizincBoolLogic       xor
 syn keyword minizincBoolLogic       xorall
 " }}}
 " Set Operations: {{{
 syn match   minizincLogical         '\.\.'
-syn keyword minizincLogical         array_intersect
-syn keyword minizincLogical         array_union
-syn keyword minizincLogical         card
-syn keyword minizincLogical         diff
-syn keyword minizincLogical         in
-syn keyword minizincLogical         intersect
-syn keyword minizincLogical         subset
-syn keyword minizincLogical         superset
-syn keyword minizincLogical         symdiff
-syn keyword minizincLogical         union
+syn keyword minizincFunction        array_intersect
+syn keyword minizincFunction        array_union
+syn keyword minizincFunction        card
+syn match   minizincLogical         '\<diff\>'
+syn match   minizincFunction        '\<diff\(\s*(\)\@='
+syn match   minizincLogical         '\<in\>'
+syn match   minizincFunction        '\<in\(\s*(\)\@='
+syn match   minizincLogical         '\<intersect\>'
+syn match   minizincFunction        '\<intersect\(\s*(\)\@='
+syn match   minizincLogical         '\<subset\>'
+syn match   minizincFunction        '\<subset\(\s*(\)\@='
+syn match   minizincLogical         '\<superset\>'
+syn match   minizincFunction        '\<superset\(\s*(\)\@='
+syn match   minizincLogical         '\<symdiff\>'
+syn match   minizincFunction        '\<symdiff\(\s*(\)\@='
+syn match   minizincLogical         '\<union\>'
+syn match   minizincFunction        '\<union\(\s*(\)\@='
 " }}}
-syn match   minizincExpression      '\(\(\<constraint\>\|\<var\>\).\+\)\@<=='
 syn keyword minizincExpression      where
 syn match   minizincExpression      '|'
 syn match   minizincExpression      '++'
@@ -337,14 +344,28 @@ syn keyword minizincAnnotation      output_array
 syn keyword minizincAnnotation      output_var
 syn keyword minizincAnnotation      promise_total
 syn keyword minizincAnnotation      var_is_introduced
+" }}}
 
+" Search Annotations: {{{
+syn keyword minizincAnnoFunc        bool_search
+syn keyword minizincAnnoFunc        float_search
+syn keyword minizincAnnoFunc        int_search
+syn keyword minizincAnnoFunc        seq_search
+syn keyword minizincAnnoFunc        set_search
+
+"   Variable Selection Annotations:
 syn keyword minizincAnnotation      anti_first_fail
-syn keyword minizincAnnotation      bool_search
-syn keyword minizincAnnotation      complete
 syn keyword minizincAnnotation      dom_w_deg
 syn keyword minizincAnnotation      first_fail
-syn keyword minizincAnnotation      float_search
 syn keyword minizincAnnotation      impact
+syn keyword minizincAnnotation      input_order
+syn keyword minizincAnnotation      largest
+syn keyword minizincAnnotation      max_regret
+syn keyword minizincAnnotation      most_constrained
+syn keyword minizincAnnotation      occurrence
+syn keyword minizincAnnotation      smallest
+
+"   Value Choice Annotations:
 syn keyword minizincAnnotation      indomain
 syn keyword minizincAnnotation      indomain_interval
 syn keyword minizincAnnotation      indomain_max
@@ -355,22 +376,14 @@ syn keyword minizincAnnotation      indomain_random
 syn keyword minizincAnnotation      indomain_reverse_split
 syn keyword minizincAnnotation      indomain_split
 syn keyword minizincAnnotation      indomain_split_random
-syn keyword minizincAnnotation      input_order
-syn keyword minizincAnnotation      int_search
-syn keyword minizincAnnotation      largest
-syn keyword minizincAnnotation      max_regret
-syn keyword minizincAnnotation      most_constrained
-syn keyword minizincAnnotation      occurrence
 syn keyword minizincAnnotation      outdomain_max
 syn keyword minizincAnnotation      outdomain_median
 syn keyword minizincAnnotation      outdomain_min
 syn keyword minizincAnnotation      outdomain_random
-syn keyword minizincAnnotation      seq_search
-syn keyword minizincAnnotation      set_search
-syn keyword minizincAnnotation      smallest
 
-syn keyword minizincAnnotation      bounds
-syn keyword minizincAnnotation      domain
+"   Exploration Strategy Annotations:
+syn keyword minizincAnnotation      complete
+
 " }}}
 
 " Comments: {{{
@@ -410,7 +423,8 @@ hi def link minizincItem            Statement
 hi def link minizincConstraint      minizincFunction
 hi def link minizincOutput          Statement
 hi def link minizincComment         Comment
-hi def link minizincAnnotation      Todo
+hi def link minizincAnnotation      Constant
+hi def link minizincAnnoFunc        Function
 
 " Types: {{{
 hi def link minizincType            Type
