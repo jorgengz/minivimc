@@ -22,6 +22,7 @@ syn keyword minizincConditional     endif
 syn keyword minizincItem            annotation
 syn keyword minizincItem            function
 syn keyword minizincItem            include
+syn keyword minizincItem            let
 syn keyword minizincItem            maximize
 syn keyword minizincItem            minimize
 syn keyword minizincItem            of
@@ -335,6 +336,8 @@ syn keyword minizincFunction        row
 " }}}
 
 " Annotations: {{{
+" General Annotations: {{{
+" http://www.minizinc.org/2.0/doc-lib/doc-annotations-general.html
 syn match   minizincAnnotation      '::'
 syn keyword minizincAnnotation      defines_var
 syn keyword minizincAnnotation      doc_comment
@@ -347,13 +350,14 @@ syn keyword minizincAnnotation      var_is_introduced
 " }}}
 
 " Search Annotations: {{{
+" http://www..org/2.0/doc-lib/doc-annotations-search.html
 syn keyword minizincAnnoFunc        bool_search
 syn keyword minizincAnnoFunc        float_search
 syn keyword minizincAnnoFunc        int_search
 syn keyword minizincAnnoFunc        seq_search
 syn keyword minizincAnnoFunc        set_search
 
-"   Variable Selection Annotations:
+" Variable Selection Annotations:
 syn keyword minizincAnnotation      anti_first_fail
 syn keyword minizincAnnotation      dom_w_deg
 syn keyword minizincAnnotation      first_fail
@@ -365,7 +369,7 @@ syn keyword minizincAnnotation      most_constrained
 syn keyword minizincAnnotation      occurrence
 syn keyword minizincAnnotation      smallest
 
-"   Value Choice Annotations:
+" Value Choice Annotations:
 syn keyword minizincAnnotation      indomain
 syn keyword minizincAnnotation      indomain_interval
 syn keyword minizincAnnotation      indomain_max
@@ -381,7 +385,7 @@ syn keyword minizincAnnotation      outdomain_median
 syn keyword minizincAnnotation      outdomain_min
 syn keyword minizincAnnotation      outdomain_random
 
-"   Exploration Strategy Annotations:
+" Exploration Strategy Annotations:
 syn keyword minizincAnnotation      complete
 
 " }}}
